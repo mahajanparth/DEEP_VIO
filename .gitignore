@@ -1,0 +1,10 @@
+build/
+datasets/
+results/runs/
+*.onnx
+third_party/onnxruntime*/
+__pycache__/
+.vscode/
+.cache/
+third_party/gtsam/
+third_party/install/
