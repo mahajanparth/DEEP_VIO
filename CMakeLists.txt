@@ -37,6 +37,7 @@ add_compile_options(-Wall -Wextra)
 # ---- core: everything that does not need GTSAM ----
 add_library(deep_vio_core
   src/dataset/euroc_dataset.cpp
+  src/geometry/so3.cpp
 )
 target_include_directories(deep_vio_core PUBLIC ${PROJECT_SOURCE_DIR}/include)
 target_link_libraries(deep_vio_core PUBLIC Eigen3::Eigen ${OpenCV_LIBS})
@@ -61,6 +62,7 @@ if(BUILD_TESTS)
 
   add_executable(deep_vio_tests
     tests/test_euroc_dataset.cpp
+    tests/test_so3.cpp
   )
   target_link_libraries(deep_vio_tests PRIVATE deep_vio_core GTest::gtest_main)
   gtest_discover_tests(deep_vio_tests)
