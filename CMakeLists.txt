@@ -88,4 +88,12 @@ if(BUILD_TESTS)
   target_link_libraries(deep_vio_tests PRIVATE deep_vio_core GTest::gtest_main)
   gtest_discover_tests(deep_vio_tests)
 
+  if(DEEP_VIO_WITH_GTSAM)
+    add_executable(deep_vio_gtsam_tests
+      tests/test_gtsam_consistency.cpp
+      tests/test_toy_optimization.cpp
+    )
+    target_link_libraries(deep_vio_gtsam_tests PRIVATE deep_vio_backend GTest::gtest_main)
+    gtest_discover_tests(deep_vio_gtsam_tests)
+  endif()
 endif()
