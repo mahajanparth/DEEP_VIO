@@ -57,6 +57,11 @@ add_executable(track_euroc apps/track_euroc.cpp)
 target_link_libraries(track_euroc PRIVATE deep_vio_core)
 
 # ---- backend: GTSAM sliding-window estimator ----
+if(DEEP_VIO_WITH_GTSAM)
+  add_library(deep_vio_backend src/backend/vio_estimator.cpp)
+  target_link_libraries(deep_vio_backend PUBLIC deep_vio_core gtsam)
+
+endif()
 
 # ---- tests ----
 option(BUILD_TESTS "Build unit tests" ON)
