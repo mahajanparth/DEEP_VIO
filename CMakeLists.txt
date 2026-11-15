@@ -40,6 +40,7 @@ add_library(deep_vio_core
   src/geometry/so3.cpp
   src/geometry/camera_model.cpp
   src/geometry/triangulation.cpp
+  src/imu/imu_segments.cpp
 )
 target_include_directories(deep_vio_core PUBLIC ${PROJECT_SOURCE_DIR}/include)
 target_link_libraries(deep_vio_core PUBLIC Eigen3::Eigen ${OpenCV_LIBS})
