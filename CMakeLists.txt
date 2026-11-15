@@ -39,6 +39,7 @@ add_library(deep_vio_core
   src/dataset/euroc_dataset.cpp
   src/geometry/so3.cpp
   src/geometry/camera_model.cpp
+  src/geometry/triangulation.cpp
 )
 target_include_directories(deep_vio_core PUBLIC ${PROJECT_SOURCE_DIR}/include)
 target_link_libraries(deep_vio_core PUBLIC Eigen3::Eigen ${OpenCV_LIBS})
@@ -65,6 +66,7 @@ if(BUILD_TESTS)
     tests/test_euroc_dataset.cpp
     tests/test_so3.cpp
     tests/test_camera_model.cpp
+    tests/test_triangulation.cpp
   )
   target_link_libraries(deep_vio_tests PRIVATE deep_vio_core GTest::gtest_main)
   gtest_discover_tests(deep_vio_tests)
