@@ -44,11 +44,11 @@ in C++ through ONNX Runtime, lowers the mean trajectory error on EuRoC Machine H
 
 Both front-ends implement the same `FeatureTracker` interface and are selected with
 `tracker.type` in the config; the back-end is identical for both. Monocular VIO gets metric
-scale from the IMU, so Sim(3)- and SE(3)-aligned errors are nearly identical (scale 0.98–1.00).
+scale from the IMU, so Sim(3)- and SE(3)-aligned errors are nearly identical (scale 0.98-1.00).
 
 ## Data Preparation
 Download the [EuRoC MAV dataset](https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets)
-in ASL format (Machine Hall, MH_01–MH_05). Only `cam0`, `imu0` and
+in ASL format (Machine Hall, MH_01-MH_05). Only `cam0`, `imu0` and
 `state_groundtruth_estimate0` are used. The scripts expect this layout (`EUROC_ROOT` overrides
 the root):
 ```Shell
@@ -150,12 +150,12 @@ Findings:
 
 | cost | KLT | SP+LG |
 |---|---|---|
-| front-end time per frame | 5–8 ms (CPU) | 25 ms (GPU), about 210 ms (CPU) |
+| front-end time per frame | 5-8 ms (CPU) | 25 ms (GPU), about 210 ms (CPU) |
 | frame-to-frame track survival (MH_01) | 91 % | 84 % |
 
-The back-end averages 27–45 ms per frame, with spikes up to about 340 ms. SP+LG plus the
+The back-end averages 27-45 ms per frame, with spikes up to about 340 ms. SP+LG plus the
 back-end is about 60 ms/frame at 20 Hz, slightly over real time. ONNX Runtime on the GPU is
-not bit-exact between runs, so differences of ±0.01–0.02 m should not be over-interpreted.
+not bit-exact between runs, so differences of ±0.01-0.02 m should not be over-interpreted.
 More detail: [results/baseline_classical.md](results/baseline_classical.md) and
 [results/learned_frontend.md](results/learned_frontend.md). The figures are regenerated with
 `python scripts/plot_results.py` and `scripts/make_teaser.py`.
@@ -190,15 +190,6 @@ licenses: GTSAM (BSD), ONNX Runtime (MIT), LightGlue and LightGlue-ONNX (Apache-
 SuperPoint weights are released by Magic Leap for non-commercial use only.
 
 ## Citation
-If you use this code, please cite the repository:
-```bibtex
-@misc{mahajan2026deepvio,
-  title        = {{DEEP\_VIO}: Monocular Visual-Inertial Odometry with Learned Front-Ends},
-  author       = {Mahajan, Parth},
-  year         = {2026},
-  howpublished = {\url{https://github.com/mahajanparth/DEEP_VIO}}
-}
-```
 DEEP_VIO builds on these works:
 ```bibtex
 @inproceedings{detone2018superpoint,
