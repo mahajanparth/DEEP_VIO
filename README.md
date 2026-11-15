@@ -1,10 +1,6 @@
 # DEEP_VIO: Monocular Visual-Inertial Odometry with Learned Front-Ends
 ### C++ · GTSAM · ONNX Runtime · EuRoC MAV
 
-> DEEP_VIO: a from-scratch monocular VIO that swaps a classical KLT front-end for SuperPoint + LightGlue  
-> Parth Mahajan  
-> Learning project, 2026
-
 <img src="results/figures/teaser.png">
 
 DEEP_VIO is a tightly coupled monocular visual-inertial odometry system written from scratch in
@@ -12,13 +8,6 @@ C++ to learn SLAM/VIO end to end. A classical pipeline (KLT tracking, IMU preint
 GTSAM fixed-lag smoother) is the baseline. Learned components are swapped in one at a time and
 must beat it on EuRoC. The first learned stage, a **SuperPoint + LightGlue** front-end running
 in C++ through ONNX Runtime, lowers the mean trajectory error on EuRoC Machine Hall by **26 %**.
-
-## News
-- **2026-11-14**: Learned front-end (SuperPoint + LightGlue, ONNX Runtime CUDA): mean ATE
-  0.213 m → 0.158 m on MH_01–05. Added 3-D map export (`--ply`) and a 5 Hz stress test
-  (`--stride`).
-- **2026-11-13**: Classical baseline: KLT + GTSAM sliding-window VIO, 0.11–0.27 m ATE on
-  MH_01–05.
 
 ## TODO List
 - [x] EuRoC loader, SO(3) and camera models, triangulation (hand-written, unit-tested)
