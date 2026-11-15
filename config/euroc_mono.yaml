@@ -1,0 +1,49 @@
+%YAML:1.0
+# Monocular-inertial VIO on EuRoC MAV. Camera intrinsics, distortion and the extrinsic T_BC are
+# read from the dataset's cam0/sensor.yaml, so they are not repeated here.
+
+tracker:
+  max_features: 150
+  min_distance: 30
+  quality_level: 0.01
+  win_size: 21
+  pyramid_levels: 3
+  fb_threshold: 0.5
+  ransac_threshold: 1.0
+  use_clahe: 1
+
+init:
+  window_s: 1.0
+  max_acc_std: 0.08
+  max_gyro_std: 0.02
+
+imu:
+  # -1 = use imu0/sensor.yaml value x noise_inflation. Datasheet values are optimistic:
+  # they ignore vibration, timestamp jitter and the zero-order-hold integration error.
+  gyro_noise_density: -1
+  accel_noise_density: -1
+  gyro_random_walk: -1
+  accel_random_walk: -1
+  noise_inflation: 5.0
+  gravity: 9.81
+
+keyframe:
+  min_dt: 0.1
+  max_dt: 0.5
+  min_parallax_px: 10.0
+  min_track_ratio: 0.6
+
+backend:
+  smoother: "batch"          # batch | isam2
+  lag_s: 3.0
+  lm_max_iterations: 10
+  pixel_sigma: 1.0
+  huber_k: 1.5
+  min_track_obs: 3
+  min_parallax_deg: 1.0
+  max_reproj_px: 3.0
+  min_depth: 0.2
+  max_depth: 40.0
+  zupt_max_parallax_px: 0.5
+  zupt_max_acc_std: 0.2
+  zupt_vel_sigma: 0.01

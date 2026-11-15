@@ -61,6 +61,8 @@ if(DEEP_VIO_WITH_GTSAM)
   add_library(deep_vio_backend src/backend/vio_estimator.cpp)
   target_link_libraries(deep_vio_backend PUBLIC deep_vio_core gtsam)
 
+  add_executable(run_euroc apps/run_euroc.cpp)
+  target_link_libraries(run_euroc PRIVATE deep_vio_backend)
 endif()
 
 # ---- tests ----
