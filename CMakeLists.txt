@@ -44,6 +44,7 @@ add_library(deep_vio_core
   src/imu/preintegration.cpp
   src/imu/static_initializer.cpp
   src/frontend/klt_tracker.cpp
+  src/util/config.cpp
 )
 target_include_directories(deep_vio_core PUBLIC ${PROJECT_SOURCE_DIR}/include)
 target_link_libraries(deep_vio_core PUBLIC Eigen3::Eigen ${OpenCV_LIBS})
