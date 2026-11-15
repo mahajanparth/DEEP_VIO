@@ -51,6 +51,9 @@ target_link_libraries(deep_vio_core PUBLIC Eigen3::Eigen ${OpenCV_LIBS})
 add_executable(play_euroc apps/play_euroc.cpp)
 target_link_libraries(play_euroc PRIVATE deep_vio_core)
 
+add_executable(track_euroc apps/track_euroc.cpp)
+target_link_libraries(track_euroc PRIVATE deep_vio_core)
+
 # ---- backend: GTSAM sliding-window estimator ----
 
 # ---- tests ----
